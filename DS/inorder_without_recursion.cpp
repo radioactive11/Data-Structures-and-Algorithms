@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
@@ -51,11 +52,24 @@ Node* Node::insert(Node* root, int value)
 
 void Node::inorder(Node* root)
 {
-    if(!root)
-        return;
-    inorder(root -> left);
-    cout << root -> data << endl;
-    inorder(root -> right);
+    cout << "Without recursion: \n";
+    Node* curr = root;
+    stack <Node*> s;
+
+    while(curr != nullptr || s.empty() == false)
+    {
+        while(curr != nullptr)
+        {
+            s.push(curr);
+            curr = curr -> left;
+        }
+        curr = s.top();
+        s.pop();
+
+        cout << curr -> data << endl;
+
+        curr = curr -> right;
+    }
 }
 
 int main()
