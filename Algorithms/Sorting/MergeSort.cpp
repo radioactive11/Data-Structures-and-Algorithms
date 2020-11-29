@@ -18,9 +18,9 @@ typedef pair <int, char> pic;
 
 //int COUNTER = 0;
 
-int merge(int arr1[], int low, int mid, int high)
+long int merge(int arr1[], int low, int mid, int high)
 {
-    static int COUNTER = 0;
+    static long int COUNTER = 0;
     int n1 = mid - low + 1;
     int n2 = high - mid;
     int left[n1];
@@ -68,9 +68,9 @@ int merge(int arr1[], int low, int mid, int high)
 }
 
 
-int mergeSort(int arr1[], int low, int high)
+long int mergeSort(int arr1[], int low, int high)
 {
-    int counter = 0;
+    long int counter = 0;
     if(low < high)
     {
         int mid = low + (high - low)/2;
