@@ -12,6 +12,7 @@ class Node
     Node();
     Node(int value);
     Node* insert(Node* root, int data);
+    void print_node(Node* curr);
     void inorder(Node* root);
 };
 
@@ -58,6 +59,11 @@ void Node::inorder(Node* root)
     inorder(root -> right);
 }
 
+void Node::print_node(Node* curr)
+{
+    cout << curr->left->data;
+}
+
 int main()
 {
     Node bst, *root=nullptr;
@@ -68,6 +74,6 @@ int main()
     root = bst.insert(root, 10);
     root = bst.insert(root, 90);
     root = bst.insert(root, 20);
-    bst.inorder(root);
+    bst.print_node(root);
     return 0;
 }

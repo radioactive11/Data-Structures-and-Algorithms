@@ -64,6 +64,42 @@ void inorder(Node* root)
     }
 }
 
+Node* minTree(Node* curr)
+{
+    Node* temp = curr;
+    while(temp -> left != nullptr)
+        temp = temp -> left;
+    return temp;
+}
+
+Node* succesor(Node* curr, Node* root)
+{
+    Node* temp = root;
+    if(curr -> right != nullptr)
+        return minTree(curr -> right);
+    
+    else
+    {
+        while(root != nullptr)
+        {
+            if(curr -> data < root -> data)
+            {
+                temp = root;
+                root = root -> left;
+            }
+            else if(curr -> data > root -> data)
+            {
+                root = root -> right;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+    return temp;
+}
+
 int main()
 {
     Node* root = nullptr;
@@ -74,15 +110,10 @@ int main()
     root = insert(root, 2);
     root = insert(root, 5);
     root = insert(root, 9);
-
-    if(search(root, 22) == true)
-        cout << "Found" << endl;
-    else
-        cout << "Not found" << endl;
-
     root = insert(root, 100);
     root = insert(root, 12);
-
     inorder(root);
-
+    Node* succ = succesor(root->left->right, root);
+    cout << root->left->right->data;
+    cout << succ -> data;
 }

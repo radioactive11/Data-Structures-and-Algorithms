@@ -35,6 +35,8 @@ void insert_at_n(Node* head, int data, int n)
 
 }
 
+// search for data in ll
+
 Node* search(Node* head, int data)
 {
     Node* temp = head;
@@ -48,6 +50,16 @@ Node* search(Node* head, int data)
         temp = temp -> next;
     }
     return nullptr;
+}
+
+void delete(Node* head, int data)
+{
+    // Node* temp = head;
+    Node* ptr = search(head, data);
+
+    if(ptr == nullptr){return;}
+
+    
 }
 
 // print the linked list
