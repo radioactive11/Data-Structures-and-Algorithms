@@ -11,8 +11,11 @@ private:
 public:
     bst();
     bst(int data);
-    void inorder_traversal(bst* root);
     bst* insert_node(bst* root, int value);
+    void inorder_traversal(bst* root);
+    void preorder_traversal(bst* root);
+    bool search_tree(bst* root, int value);
+    bst* min_tree(bst* root);
     ~bst();
 };
 
@@ -62,6 +65,35 @@ bst* bst::insert_node(bst* root, int value)
     return root;
 }
 
+bool bst::search_tree(bst* root, int value)
+{
+    while (root != nullptr)
+    {
+        if(value > root->data)
+        {
+            root = root->right;
+        }
+        else if(value < root->data)
+        {
+            root = root->left;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bst* bst::min_tree(bst* root)
+{
+    while(root->left != nullptr)
+    {
+        root = root->left;
+    }
+    cout << "Minimum value is: " << root->data << "\n";
+    return root;
+}
 
 bst::~bst()
 {
@@ -81,5 +113,12 @@ int main(int argc, char const *argv[])
     root = B.insert_node(root, 80);
     root = B.insert_node(root, 70);
     B.inorder_traversal(root);
+    B.min_tree(root);
+    if(B.search_tree(root, 50))
+        cout << "Value found\n";
+    
+    else
+        cout << "Value not found\n";
+    
     return 0;
 }
